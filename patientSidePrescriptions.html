@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patient Prescriptions</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .container_docs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .content h1,
+      .content h2,
+      .content h3,
+      .content h4,
+      .content h5,
+      .content h6 {
+        font-weight: 500;
+      }
+      .content strong {
+        font-weight: 600;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #222;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      h1,
+      .h1 {
+        font-size: 50px;
+        font-weight: 800;
+      }
+      @media (max-width: 575px) {
+        h1,
+        .h1 {
+          font-size: 36px;
+          font-weight: 600;
+        }
+      }
+
+      h2,
+      .h2 {
+        font-size: 42px;
+        font-weight: 800;
+      }
+      @media (max-width: 575px) {
+        h2,
+        .h2 {
+          font-size: 32px;
+          font-weight: 600;
+        }
+      }
+
+      h3,
+      .h3 {
+        font-size: 32px;
+      }
+      @media (max-width: 575px) {
+        h3,
+        .h3 {
+          font-size: 28px;
+        }
+      }
+
+      h4,
+      .h4 {
+        font-size: 26px;
+      }
+
+      h5,
+      .h5 {
+        font-size: 22px;
+      }
+
+      h6,
+      .h6 {
+        font-size: 18px;
+      }
+
+      .link {
+        /* display: block;
+        font-size: 20px;
+        margin: 35px;
+        color: revert;
+        padding: 10px;
+        background-color: bisque;
+        padding: 17px;
+        border-radius: 55px;
+        box-shadow: 0px 0px 10px 0px;
+        margin-top: 20px; */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .container_test {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  height: 305px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.card a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Your Prescriptions</h1>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <h6>
+        Following are the links of presciptions you have got from doctors.
+      </h6>
+    </div>
+
+    <div class="container_test" id="container-test"></div>
+    </div>
+    
+
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-storage.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyCABO5A2bt8_ePU4tN7D92s6wTUlrWgCmE",
+        authDomain: "healthcare-d6d4b.firebaseapp.com",
+        projectId: "healthcare-d6d4b",
+        storageBucket: "healthcare-d6d4b.appspot.com",
+        messagingSenderId: "225897092313",
+        appId: "1:225897092313:web:3c0fccdf8350b500a71ac8",
+        measurementId: "G-VMVQZ4VJQR",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the Firestore database
+var db = firebase.firestore();
+
+const params = new URLSearchParams(window.location.search);
+const glob_phone_patient = params.get("phone");
+console.log("Phone: " + glob_phone_patient);
+
+// Get a reference to the doctor's document in the doctors collection
+var doctorRef = db.collection("Patients").doc(glob_phone_patient);
+
+// Attach a listener to the doctor's document to retrieve the prescriptions data
+doctorRef.onSnapshot(function (doc) {
+  // Get the prescriptions array data from the doctor's document
+  var prescriptions = doc.data().report;
+
+  // Get a reference to the container div for the cards
+  var containerDiv = document.getElementById("container-test");
+
+  // Clear the previous content of the container
+  containerDiv.innerHTML = "";
+
+  // Iterate over the prescriptions array and create a card for each link
+  prescriptions.forEach(function (prescription) {
+    // Create a new card element
+    var cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+
+    // Create an image element
+    var imageElement = document.createElement("img");
+    imageElement.src =
+      "https://i.ibb.co/y0t16j1/image.png";
+    imageElement.alt = "Image";
+    cardElement.appendChild(imageElement);
+
+    // Create a link element
+    var linkElement = document.createElement("a");
+    linkElement.href = prescription;
+    linkElement.target = "_blank";
+    linkElement.textContent = "Navigate To Report";
+    linkElement.style.fontSize = "20px"; 
+    linkElement.style.marginTop = "15px";
+    cardElement.appendChild(linkElement);
+
+    // Append the card to the container div
+    containerDiv.appendChild(cardElement);
+  });
+});
+
+</script>
+  </body>
+</html>

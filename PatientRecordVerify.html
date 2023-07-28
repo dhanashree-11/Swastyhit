@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <title>Patient Login Form</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- plugins -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+  <!-- Main Stylesheet -->
+
+  <link rel="stylesheet" href="./css/paitent_login_style.css" />
+
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.css" />
+    <!-- Icofont -->
+    <link rel="stylesheet" href="plugins/icofont/icofont.css" />
+
+
+  <link href="css/newstyle.css" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+<!-- HEADER HERE -->
+<header class="sticky-top navigation" style=" position: fixed; top: 0;width: 100%;">
+  <div class=container>
+    <nav class="navbar navbar-expand-lg fixed-top trans-navigation" style=" position: fixed; top: 0;width: 100%; background-color: black;">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/swasthyahithlogo.png" alt="" class="img-fluid b-logo" style="height: 90px; width: 180px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+    
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav ">
+            
+    
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="index.html" style="color: #fff">Home</a>
+            </li>
+    
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown" style="color: #fff"
+                aria-haspopup="true" aria-expanded="false">
+                Doctor 
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                <li><a class="dropdown-item" href="./DoctorRegistration.html">Register</a></li>
+                <li><a class="dropdown-item" href="./doctor_login.html">Login</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="color: #fff">
+                Patient 
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                <li><a class="dropdown-item" href="./PatientRegistration.html">Register</a></li>
+                <li><a class="dropdown-item" href="paitent_login.html">Login</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="contact.html" style="color: #fff">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<section class="section" style="margin-top: 100px">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="p-5 shadow rounded content">
+          <h2 class="section-title">Patient Login</h2>
+          <form>
+          
+            <div class="form-group mobile">
+                <div class="phoneTag">
+                    <label for="mobileNo">Mobile Number</label>
+                    <input type="text" class="form-control" id="number" name="number" placeholder="+917720XXXXXX" required>
+                </div>
+                <div class="otpBtn">
+                    <button type="button" id="sendotp" onclick="phoneAuth()" class="btn btn-primary">Send OTP</button>
+                </div>
+            </div>
+
+            <div id="recaptcha-container"></div>
+
+            
+            <div class="form-group OTPVerify">
+                <div class="otpTag">
+                    <label for="email">Enter OTP</label>
+                    <input type="text" class="form-control" id="verificationcode" name="otp" placeholder="Type here.." required>
+                </div>
+                <div class="otpVerifyBtn">
+                    <button type="button" class="btn btn-primary" onclick="codeverify()">Verify OTP</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<hr style="border: 1px solid black; width: 80%;">
+<br>
+<br>
+
+
+<section id="footer" class="section-padding">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-lg-4">
+        <div class="footer-widget footer-link">
+          <h4>We concern about INDIA<br> and its development in medical sector.</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ipsam hic non sunt recusandae atque unde saepe nihil earum voluptatibus aliquid optio suscipit nobis quia vel quod, iure quae.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-12">
+        <div class="footer-widget footer-text">
+          <h4>Our location</h4>
+          <p class="mail"><span>Mail:</span> elittrident@gmail.com</p>
+          <p><span>Phone :</span>+917843087679</p>
+          <p><span>Location:</span> VIT, Pune</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER HERE -->
+
+<!-- plugins -->
+<script src="plugins/jQuery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/masonry/masonry.min.js"></script>
+<script src="plugins/clipboard/clipboard.min.js"></script>
+<script src="plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- Main Script -->
+<script src="js/script.js"></script>
+
+<script src="https://use.fontawesome.com/4ecc3dbb0b.js"></script>
+<script
+  src="https://example.com/fontawesome/v5.15.4/js/all.js"
+  data-auto-a11y="true"
+></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+
+<script>
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCABO5A2bt8_ePU4tN7D92s6wTUlrWgCmE",
+    authDomain: "healthcare-d6d4b.firebaseapp.com",
+    projectId: "healthcare-d6d4b",
+    storageBucket: "healthcare-d6d4b.appspot.com",
+    messagingSenderId: "225897092313",
+    appId: "1:225897092313:web:3c0fccdf8350b500a71ac8",
+    measurementId: "G-VMVQZ4VJQR",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  render();
+  function render() {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container"
+    );
+    recaptchaVerifier.render();
+  }
+  // function for send message
+  function phoneAuth() {
+    console.log("f");
+    document.getElementById("recaptcha-container").style = "display: none"
+    var number = document.getElementById("number").value;
+    firebase
+      .auth()
+      .signInWithPhoneNumber(number, window.recaptchaVerifier)
+      .then(function (confirmationResult) {
+        window.confirmationResult = confirmationResult;
+        coderesult = confirmationResult;
+        // document.getElementById("otp_field").style.display = "block";
+      })
+      .catch(function (error) {
+        alert(error.message);
+      });
+  }
+
+
+  const params = new URLSearchParams(window.location.search);
+const glob_phone_doc = params.get("number");
+console.log("Phone: " + glob_phone_doc);
+  // function for code verify
+  function codeverify() {
+        var number = document.getElementById("number").value;
+
+        var code = document.getElementById("verificationcode").value;
+        confirmationResult
+          .confirm(code)
+          .then(function (result) {
+            var user = result.user;
+            console.log(user);
+            alert("Login Successful");
+            const url = `patientSidePrescriptionsdoc.html?number=${encodeURIComponent(
+              number
+            )}&docphone=${encodeURIComponent(
+              glob_phone_doc
+            )}`;
+            window.location.href = url;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+</script>
+
+</body>
+</html>

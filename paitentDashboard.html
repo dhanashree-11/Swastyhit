@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <title>Paitent Dashboard</title>
+
+    <!-- mobile responsive meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="godocs" />
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- plugins -->
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css" />
+    <!-- Main Stylesheet -->
+    <link href="css/dashboard.css" rel="stylesheet" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+
+    
+  </head>
+
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-storage.js"></script>
+
+    <header class="sticky-top navigation" style=" position: fixed; top: 0;width: 100%;">
+      <div class=container>
+        <nav class="navbar navbar-expand-lg fixed-top trans-navigation" style=" position: fixed; top: 0;width: 100%; background-color: black;">
+          <div class="container">
+            <a class="navbar-brand" href="index.html">
+              <img src="images/swasthyahithlogo.png" alt="" class="img-fluid b-logo" style="height: 90px; width: 180px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon">
+                <i class="fa fa-bars"></i>
+              </span>
+            </button>
+        
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+              <ul class="navbar-nav ">
+                
+        
+                <li class="nav-item">
+                  <a class="nav-link smoth-scroll" href="index.html" style="color: #fff">Home</a>
+                </li>
+        
+        
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown" style="color: #fff"
+                    aria-haspopup="true" aria-expanded="false">
+                    Doctor 
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                    <li><a class="dropdown-item" href="./DoctorRegistration.html">Register</a></li>
+                    <li><a class="dropdown-item" href="./doctor_login.html">Login</a></li>
+                  </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: #fff">
+                    Patient 
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                    <li><a class="dropdown-item" href="./PatientRegistration.html">Register</a></li>
+                    <li><a class="dropdown-item" href="paitent_login.html">Login</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link smoth-scroll" href="contact.html" style="color: #fff">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- banner -->
+    <section class="section pb-0" style="margin-top: 100px;">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-7 text-center text-lg-left">
+            <h1 class="mb-4"></h1>
+            <p class="mb-4">
+              <p class="phone"></p>
+              <p class="age"></p>
+              <p class="address"></p>
+            </p>
+          </div>
+          <div class="col-lg-4 d-lg-block d-none">
+            <img
+              src="images/paitentBanner.png"
+              alt="illustration"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /banner -->
+    <hr style="width: 80%; border: 1px solid" />
+    <!-- topics -->
+    <section class="section pb-0">
+      <div class="container">
+        <h2 class="section-title">Browse Your Health</h2>
+        <div class="row">
+          <!-- topic -->
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card match-height">
+              <div class="card-body">
+                <h3 class="card-icon"></h3>
+                <h3 class="card-title h4">Total Prescriptions</h3>
+                <p class="card-text">
+                  Number of prescriptions you have since you joined SwasthyaHit
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- topic -->
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4" onclick="patientsidepres()">
+            <div class="card match-height">
+              <div class="card-body">
+                <i class="card-icon ti-credit-card mb-4"></i>
+                <h3 class="card-title h4">See Prescriptions</h3>
+                <p class="card-text">
+                  See all your presciptions since you joined SwasthyaHit
+                </p>
+                <!-- <a
+                  href="patientSidePrescriptions.html"
+                  class="stretched-link"
+                ></a> -->
+              </div>
+            </div>
+          </div>
+          <!-- topic -->
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card match-height">
+              <div class="card-body">
+                <i class="card-icon ti-write mb-4"></i>
+                <h3 class="card-title h4">Upload Document</h3>
+                <input
+                  type="file"
+                  id="pdfFile"
+                  accept="application/pdf,image/jpeg,image/jpg,image/png"
+                />
+                <div
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 20px;
+                  "
+                >
+                  <button
+                    type="button"
+                    style="background-color: rgb(63, 160, 63); color: white"
+                    onclick="uploadPdf()"
+                  >
+                    Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <br>
+    <hr style="border: 1px solid black; width: 80%;">
+    <br>
+    <br>
+
+    <section id="footer" class="section-padding">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-lg-4">
+            <div class="footer-widget footer-link">
+              <h4>We concern about INDIA<br> and its development in medical sector.</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ipsam hic non sunt recusandae atque unde saepe nihil earum voluptatibus aliquid optio suscipit nobis quia vel quod, iure quae.</p>
+            </div>
+          </div>
+    
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="footer-widget footer-text">
+              <h4>Our location</h4>
+              <p class="mail"><span>Mail:</span> elittrident@gmail.com</p>
+              <p><span>Phone :</span>+917843087679</p>
+              <p><span>Location:</span> VIT, Pune</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- plugins -->
+    <script src="plugins/jQuery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="plugins/masonry/masonry.min.js"></script>
+    <script src="plugins/clipboard/clipboard.min.js"></script>
+    <script src="plugins/match-height/jquery.matchHeight-min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+    <script>
+
+    const params = new URLSearchParams(window.location.search);
+    const glob_phone = params.get('number');
+    console.log("Phone: "+glob_phone);
+    var glob_count;
+
+
+      // Initialize Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyCABO5A2bt8_ePU4tN7D92s6wTUlrWgCmE",
+        authDomain: "healthcare-d6d4b.firebaseapp.com",
+        projectId: "healthcare-d6d4b",
+        storageBucket: "healthcare-d6d4b.appspot.com",
+        messagingSenderId: "225897092313",
+        appId: "1:225897092313:web:3c0fccdf8350b500a71ac8",
+        measurementId: "G-VMVQZ4VJQR",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      var db = firebase.firestore();
+
+      const docRef = db
+          .collection("Patients")
+          .doc(glob_phone);
+
+        // Retrieve the document data
+        docRef
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              // Document exists, get the data
+              const data = doc.data();
+              document.querySelector(".mb-4").textContent = "Welcome, "+data.name;
+              document.querySelector(".phone").textContent = "Phone: "+data.phone;
+              document.querySelector(".phone").style = "font-weight:bold";
+              document.querySelector(".age").textContent = "Age: "+data.age;
+              document.querySelector(".age").style = "font-weight:bold";
+              document.querySelector(".address").textContent = "Address: "+data.address;
+              document.querySelector(".address").style = "font-weight:bold";
+              console.log(data.report.length);
+              document.querySelector(".card-icon").textContent = "0"+data.report.length;
+            } else {
+              console.log("No such document!");
+            }
+          })
+          .catch((error) => {
+            console.log("Error getting document:", error);
+          });
+
+      // function getData() {
+        
+      // }
+
+      function uploadPdf() {
+        var fileInput = document.getElementById("pdfFile");
+        var file = fileInput.files[0];
+
+        // Upload file to Firebase Storage and get download URL
+        var storageRef = firebase.storage().ref(glob_phone+"/" + file.name);
+        var uploadTask = storageRef.put(file);
+        uploadTask.on(
+          "state_changed",
+          function (snapshot) {
+            // Handle upload progress if needed
+          },
+          function (error) {
+            // Handle upload error if needed
+          },
+          function () {
+            // Get download URL and save to Firebase Firestore
+            uploadTask.snapshot.ref
+              .getDownloadURL()
+              .then(function (downloadURL) {
+                // Get current user ID or document ID
+                var userId = glob_phone; // replace with actual user ID or document ID
+
+                // Update Firestore document with download URL
+                var userRef = db.collection("Patients").doc(userId);
+                userRef
+                  .update({
+                    report:
+                      firebase.firestore.FieldValue.arrayUnion(downloadURL),
+                  })
+                  .then(function () {
+                    alert("PDF file uploaded successfully!");
+                  })
+                  .catch(function (error) {
+                    // Handle Firestore update error if needed
+                  });
+              })
+              .catch(function (error) {
+                // Handle download URL error if needed
+              });
+          }
+        );
+      }
+
+      const patientsidepres = () => {
+        const url = `patientSidePrescriptions.html?phone=${encodeURIComponent(
+          glob_phone
+            )}`;
+            window.location.href = url;
+      }
+      
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Doctor Registration Form</title>
+
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.css" />
+    <!-- Icofont -->
+    <link rel="stylesheet" href="plugins/icofont/icofont.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--Favicon-->
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <style>
+      body {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 14px;
+        background: #f2f2f2;
+      }
+
+      .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        height: 0;
+      }
+
+      .form_wrapper {
+        background: #fff;
+        width: 400px;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 25px;
+        margin: 8% auto 0;
+        position: relative;
+        z-index: 1;
+        border-top: 5px solid #f5ba1a;
+        -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        -webkit-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        -webkit-transition: none;
+        transition: none;
+        -webkit-animation: expand 0.8s 0.6s ease-out forwards;
+        animation: expand 0.8s 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      .form_wrapper h2 {
+        font-size: 1.5em;
+        line-height: 1.5em;
+        margin: 0;
+      }
+      .form_wrapper .title_container {
+        text-align: center;
+        padding-bottom: 15px;
+      }
+      .form_wrapper h3 {
+        font-size: 1.1em;
+        font-weight: normal;
+        line-height: 1.5em;
+        margin: 0;
+      }
+      .form_wrapper label {
+        font-size: 12px;
+      }
+      .form_wrapper .row {
+        margin: 10px -15px;
+      }
+      .form_wrapper .row > div {
+        padding: 0 15px;
+        box-sizing: border-box;
+      }
+      .form_wrapper .col_half {
+        width: 100%;
+        float: left;
+      }
+      .form_wrapper .input_field {
+        position: relative;
+        margin-bottom: 20px;
+        -webkit-animation: bounce 0.6s ease-out;
+        animation: bounce 0.6s ease-out;
+      }
+
+      .form_wrapper .reg_field {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        -webkit-animation: bounce 0.6s ease-out;
+        animation: bounce 0.6s ease-out;
+        width: 100%;
+      }
+
+      .form_wrapper .reg_field input[type="text"] {
+        width: 70%;
+        padding: 8px 10px 9px 35px;
+        height: 35px;
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+        outline: none;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+      .form_wrapper .reg_field button[type="button"] {
+        width: 30%;
+        height: 35px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 15px;
+        margin-left: 10px;
+      }
+
+      .form_wrapper .reg_field > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #333;
+        height: 100%;
+        border-right: 1px solid #cccccc;
+        text-align: center;
+        width: 30px;
+      }
+
+      .form_wrapper .reg_field > span > i {
+        padding-top: 10px;
+      }
+
+      .form_wrapper .phone_field {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        -webkit-animation: bounce 0.6s ease-out;
+        animation: bounce 0.6s ease-out;
+        width: 100%;
+      }
+
+      .form_wrapper .phone_field input[type="text"] {
+        width: 70%;
+        padding: 8px 10px 9px 35px;
+        height: 35px;
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+        outline: none;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+      .form_wrapper .phone_field button[type="button"] {
+        width: 30%;
+        height: 35px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 15px;
+        margin-left: 10px;
+      }
+
+      .form_wrapper .phone_field > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #333;
+        height: 100%;
+        border-right: 1px solid #cccccc;
+        text-align: center;
+        width: 30px;
+      }
+
+      .form_wrapper .phone_field > span > i {
+        padding-top: 10px;
+      }
+
+      .form_wrapper .otp_field {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        -webkit-animation: bounce 0.6s ease-out;
+        animation: bounce 0.6s ease-out;
+        width: 100%;
+      }
+
+      .form_wrapper .otp_field input[type="text"] {
+        width: 60%;
+        padding: 8px 10px 9px 35px;
+        height: 35px;
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+        outline: none;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+      .form_wrapper .otp_field button[type="button"] {
+        width: 30%;
+        height: 35px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 15px;
+        margin-left: 10px;
+      }
+
+      .form_wrapper .otp_field > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #333;
+        height: 100%;
+        border-right: 1px solid #cccccc;
+        text-align: center;
+        width: 30px;
+      }
+
+      .form_wrapper .otp_field > span > i {
+        padding-top: 10px;
+      }
+
+      .form_wrapper .input_field > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #333;
+        height: 100%;
+        border-right: 1px solid #cccccc;
+        text-align: center;
+        width: 30px;
+      }
+      .form_wrapper .input_field > span > i {
+        padding-top: 10px;
+      }
+      .form_wrapper .textarea_field > span > i {
+        padding-top: 10px;
+      }
+      .form_wrapper input[type="text"] {
+        width: 100%;
+        padding: 8px 10px 9px 35px;
+        height: 35px;
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+        outline: none;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+      .form_wrapper input[type="text"]:hover {
+        background: #fafafa;
+      }
+      .form_wrapper input[type="text"]:focus {
+        -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+        -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+        box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+        border: 1px solid #f5ba1a;
+        background: #fafafa;
+      }
+      .form_wrapper input[type="button"] {
+        background: #f5ba1a;
+        height: 35px;
+        line-height: 35px;
+        width: 100%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+      .form_wrapper input[type="button"]:hover {
+        background: #e1a70a;
+      }
+      .form_wrapper input[type="button"]:focus {
+        background: #e1a70a;
+      }
+
+      .form_container .row .col_half.last {
+        border-left: 1px solid #cccccc;
+      }
+      @-webkit-keyframes check {
+        0% {
+          height: 0;
+          width: 0;
+        }
+        25% {
+          height: 0;
+          width: 7px;
+        }
+        50% {
+          height: 20px;
+          width: 7px;
+        }
+      }
+      @keyframes check {
+        0% {
+          height: 0;
+          width: 0;
+        }
+        25% {
+          height: 0;
+          width: 7px;
+        }
+        50% {
+          height: 20px;
+          width: 7px;
+        }
+      }
+      @-webkit-keyframes expand {
+        0% {
+          -webkit-transform: scale3d(1, 0, 1);
+          opacity: 0;
+        }
+        25% {
+          -webkit-transform: scale3d(1, 1.2, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1, 0.85, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1, 1.05, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          opacity: 1;
+        }
+      }
+      @keyframes expand {
+        0% {
+          -webkit-transform: scale3d(1, 0, 1);
+          transform: scale3d(1, 0, 1);
+          opacity: 0;
+        }
+        25% {
+          -webkit-transform: scale3d(1, 1.2, 1);
+          transform: scale3d(1, 1.2, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1, 0.85, 1);
+          transform: scale3d(1, 0.85, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1, 1.05, 1);
+          transform: scale3d(1, 1.05, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+          opacity: 1;
+        }
+      }
+      @-webkit-keyframes bounce {
+        0% {
+          -webkit-transform: translate3d(0, -25px, 0);
+          opacity: 0;
+        }
+        25% {
+          -webkit-transform: translate3d(0, 10px, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, -6px, 0);
+        }
+        75% {
+          -webkit-transform: translate3d(0, 2px, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+      @keyframes bounce {
+        0% {
+          -webkit-transform: translate3d(0, -25px, 0);
+          transform: translate3d(0, -25px, 0);
+          opacity: 0;
+        }
+        25% {
+          -webkit-transform: translate3d(0, 10px, 0);
+          transform: translate3d(0, 10px, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, -6px, 0);
+          transform: translate3d(0, -6px, 0);
+        }
+        75% {
+          -webkit-transform: translate3d(0, 2px, 0);
+          transform: translate3d(0, 2px, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+      @media (max-width: 600px) {
+        .form_wrapper .col_half {
+          width: 100%;
+          float: none;
+        }
+
+        .bottom_row .col_half {
+          width: 50%;
+          float: left;
+        }
+
+        .form_container .row .col_half.last {
+          border-left: none;
+        }
+
+        .remember_me {
+          padding-bottom: 20px;
+        }
+
+        .reg_verify_btn.hide-text {
+          color: transparent;
+          background-color: transparent;
+          padding: 0;
+          border: none;
+          pointer-events: none;
+        }
+
+        .reg_verify_btn.spinner:before {
+          content: "";
+          box-sizing: border-box;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 25px;
+          height: 25px;
+          margin-top: -12.5px;
+          margin-left: -12.5px;
+          border-radius: 50%;
+          border: 2px solid #f3f3f3;
+          border-top-color: #4caf50;
+          animation: spinner 0.6s linear infinite;
+        }
+
+        @keyframes spinner {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top trans-navigation">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/swasthyahithlogo.png" alt="" class="img-fluid b-logo" style="height: 90px; width: 180px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+    
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav ">
+            
+    
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="index.html">Home</a>
+            </li>
+    
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Doctor <i class="fas fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                <li><a class="dropdown-item" href="./DoctorRegistration.html">Register</a></li>
+                <li><a class="dropdown-item" href="./doctor_login.html">Login</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Patient <i class="fas fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                <li><a class="dropdown-item" href="./PatientRegistration.html">Register</a></li>
+                <li><a class="dropdown-item" href="paitent_login.html">Login</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--MAIN HEADER AREA END -->
+    <!--MAIN BANNER AREA START -->
+    <div class="page-banner-area page-contact" id="page-banner">
+      <div class="overlay dark-overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
+            <div class="banner-content content-padding">
+              <!-- partial:index.partial.html -->
+              <div class="form_wrapper" style="margin-top: -40px">
+                <div class="form_container">
+                  <div class="title_container">
+                    <h2>Doctor Registration</h2>
+                  </div>
+                  <div class="row clearfix">
+                    <div class="">
+                      <form>
+                        <div class="row clearfix">
+                          <div class="col_half">
+                            <div class="input_field">
+                              <span
+                                ><i aria-hidden="true" class="fa fa-user"></i
+                              ></span>
+                              <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Name (On your registration certificate)"
+                                required
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="input_field">
+                          <span
+                            ><i
+                              aria-hidden="true"
+                              class="fa fa-graduation-cap"
+                            ></i
+                          ></span>
+                          <input
+                            type="text"
+                            id="qual"
+                            name="qual"
+                            placeholder="Qualification"
+                            required
+                          />
+                        </div>
+
+                        <div class="reg_field">
+                          <span><i class="fa fa-shield"></i></span>
+                          <input
+                            type="text"
+                            name="regNo"
+                            id="reg"
+                            placeholder="Registration No"
+                            required
+                          />
+                          <button
+                            type="button"
+                            class="reg_verify_btn"
+                            id="reg_verify_btn"
+                            onclick="fetchRequestId()"
+                          >
+                            Verify
+                          </button>
+                        </div>
+
+                        <div class="input_field">
+                          <span
+                            ><i aria-hidden="true" class="fa fa-hospital-o"></i
+                          ></span>
+                          <input
+                            type="text"
+                            name="clinic_name"
+                            id="hospital"
+                            placeholder="Hospital / Clinic Name"
+                            required
+                          />
+                        </div>
+
+                        <div class="input_field">
+                          <span
+                            ><i aria-hidden="true" class="fa fa-map-marker"></i
+                          ></span>
+                          <input
+                            type="text"
+                            name="address"
+                            id="address"
+                            placeholder="Hospital / Clinic Address"
+                            required
+                          />
+                        </div>
+
+                        <div class="phone_field">
+                          <span
+                            ><i aria-hidden="true" class="fa fa-phone"></i
+                          ></span>
+                          <input
+                            type="text"
+                            name="phone"
+                            id="number"
+                            placeholder="Mobile No (+91XX..)"
+                            required
+                          />
+                          <button type="button" onclick="phoneAuth()">
+                            Send OTP
+                          </button>
+                        </div>
+                        <div id="recaptcha-container"></div>
+
+                        <div
+                          class="otp_field"
+                          id="otp_field"
+                          style="margin-top: 10px; display: none"
+                        >
+                          <span
+                            ><i aria-hidden="true" class="fa fa-key"></i
+                          ></span>
+                          <input
+                            type="text"
+                            name="otp"
+                            id="verificationcode"
+                            placeholder="Enter OTP"
+                          />
+                          <button type="button" onclick="codeverify()" required>
+                            Verify OTP
+                          </button>
+                        </div>
+
+                        <input
+                          class="pushbutton"
+                          type="button"
+                          onclick="pushData()"
+                          value="Register"
+                          style="margin-top: 10p"
+                          disabled=""
+                        />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- partial -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--MAIN HEADER AREA END -->
+
+    <script src="https://use.fontawesome.com/4ecc3dbb0b.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+
+    <script>
+      const fetchRequestId = async () => {
+        var reg_id = document.getElementById("reg").value;
+        var year = reg_id.substring(0, 4);
+
+        var myHeaders = new Headers();
+        myHeaders.append("content-type", "application/json");
+        myHeaders.append(
+          "X-RapidAPI-Key",
+          "8def9c3659msh04d1088cc28ac42p11a1b0jsnd88e43f094a4"
+        );
+        myHeaders.append(
+          "X-RapidAPI-Host",
+          "mci-nmc-doctor-verification.p.rapidapi.com"
+        );
+
+        var raw = JSON.stringify({
+          task_id: "74f4c926-250c-43ca-9c53-453e87ceacd1",
+          group_id: "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+          data: {
+            registration_no: reg_id,
+            year_of_registration: year,
+            council_name: "Maharashtra Medical Council",
+          },
+        });
+
+        var requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow",
+        };
+
+        fetch(
+          "https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks/async/verify_with_source/nmc_doctor",
+          requestOptions
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            req_id = result.request_id;
+            console.log(result.request_id);
+            url =
+              "https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks?request_id=" +
+              req_id;
+            setTimeout(() => {
+              getData(result.request_id);
+            }, 10000);
+          })
+          .catch((error) => console.log("error", error));
+      };
+
+      const getData = async (reqq) => {
+        var myHeaders = new Headers();
+        myHeaders.append(
+          "X-RapidAPI-Key",
+          "8def9c3659msh04d1088cc28ac42p11a1b0jsnd88e43f094a4"
+        );
+        myHeaders.append(
+          "X-RapidAPI-Hos",
+          "mci-nmc-doctor-verification.p.rapidapi.com"
+        );
+
+        var requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+
+        // fetch(`https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks?request_id=${req_id}`, requestOptions).then(()=>{alert("1 one done")})
+        var user_name = document.getElementById("name").value;
+        var button = document.getElementById("reg_verify_btn");
+        fetch(
+          `https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks?request_id=${reqq}`,
+          requestOptions
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            if (
+              result[0].result.source_output.name.toLowerCase().trim() ==
+              user_name.toLowerCase().trim()
+            ) {
+              button.innerText = "Verified";
+              button.disabled = true;
+            } else {
+              button.innerText = "Failed";
+              button.disabled = false;
+            }
+          })
+          .catch((error) => console.log("error", error));
+      };
+    </script>
+
+    <script>
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCABO5A2bt8_ePU4tN7D92s6wTUlrWgCmE",
+        authDomain: "healthcare-d6d4b.firebaseapp.com",
+        projectId: "healthcare-d6d4b",
+        storageBucket: "healthcare-d6d4b.appspot.com",
+        messagingSenderId: "225897092313",
+        appId: "1:225897092313:web:3c0fccdf8350b500a71ac8",
+        measurementId: "G-VMVQZ4VJQR",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      render();
+      function render() {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+          "recaptcha-container"
+        );
+        recaptchaVerifier.render();
+      }
+      // function for send message
+      function phoneAuth() {
+        console.log("f");
+        var number = document.getElementById("number").value;
+        document.getElementById("otp_field").style.display = "block";
+
+        firebase
+          .auth()
+          .signInWithPhoneNumber(number, window.recaptchaVerifier)
+          .then(function (confirmationResult) {
+            window.confirmationResult = confirmationResult;
+            coderesult = confirmationResult;
+            document.getElementById("otp_field").style.display = "block";
+          })
+          .catch(function (error) {
+            alert(error.message);
+          });
+      }
+
+      // function for code verify
+      function codeverify() {
+        var code = document.getElementById("verificationcode").value;
+        confirmationResult
+          .confirm(code)
+          .then(function (result) {
+            var user = result.user;
+            console.log(user);
+            alert("verified");
+            const button = document.querySelector(".pushbutton");
+            button.disabled = false;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
+      const pushData = () => {
+        var name = document.getElementById("name").value;
+        var qualification = document.getElementById("qual").value;
+        var registration = document.getElementById("reg").value;
+        var hospitalname = document.getElementById("hospital").value;
+        var hospitaladdress = document.getElementById("address").value;
+        var number = document.getElementById("number").value;
+
+        db.collection("Doctors")
+          .doc(number)
+          .set({
+            name: name,
+            qualification: qualification,
+            reg_number: registration,
+            hospital: hospitalname,
+            address: hospitaladdress,
+            phone: number,
+            prescribed: [],
+          })
+          .then(() => {
+            console.log("Document successfully written!");
+            alert("Done with adding!");
+            const url = `doctorDashboard.html?phone=${encodeURIComponent(
+              number
+            )}`;
+            window.location.href = url;
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
+      };
+    </script>
+  </body>
+</html>

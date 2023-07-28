@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <title>Doctor Registration Form</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- plugins -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.css" />
+    <!-- Icofont -->
+    <!-- <link rel="stylesheet" href="plugins/icofont/icofont.css" /> -->
+  <!-- Main Stylesheet -->
+  <link href="css/newstyle.css" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+  <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-storage.js"></script>
+
+
+<!-- HEADER HERE -->
+<header class="sticky-top navigation" style=" position: fixed; top: 0;width: 100%;">
+  <div class=container>
+    <nav class="navbar navbar-expand-lg fixed-top trans-navigation" style=" position: fixed; top: 0;width: 100%; background-color: black;">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/swasthyahithlogo.png" alt="" class="img-fluid b-logo" style="height: 90px; width: 180px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+    
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav ">
+            
+    
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="index.html" style="color: #fff">Home</a>
+            </li>
+    
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown" style="color: #fff"
+                aria-haspopup="true" aria-expanded="false">
+                Doctor 
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                <li><a class="dropdown-item" href="./DoctorRegistration.html">Register</a></li>
+                <li><a class="dropdown-item" href="./doctor_login.html">Login</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#!" id="navbarWelcome" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="color: #fff">
+                Patient 
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarWelcome">
+                <li><a class="dropdown-item" href="./PatientRegistration.html">Register</a></li>
+                <li><a class="dropdown-item" href="paitent_login.html">Login</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="contact.html" style="color: #fff">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<section class="section" style="margin-top: 100px">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="p-5 shadow rounded content">
+          <h2 class="section-title">Doctor Registration</h2>
+          <form method="POST" action="#">
+            <!-- <div class="form-row"> -->
+              <div class="form-group ">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="As per your registration certificate" required>
+              </div>
+            <!-- </div> -->
+
+            <div class="form-group ">
+                <label for="qual">Qualification</label>
+                <input type="text" class="form-control" id="qual" name="qual" placeholder="M.B.B.S / M.D ....">
+            </div>
+
+            <div class="form-group registration">
+                <div class="regTag">
+                    <label for="regNo">Registration Number</label>
+                    <input type="text" class="form-control" id="reg" name="regNo" placeholder="201607XXXX" required>
+                </div>
+                <div class="regVerifyBtn">
+                    <button type="button" class="btn btn-primary" id="reg_verify_btn" onclick="fetchRequestId()">Verify No</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="hosName">Hospital Name</label>
+                <input type="text" class="form-control" id="hospital" name="clinic_name" placeholder="Type here.."
+                  required>
+            </div>
+
+            <div class="form-group">
+                <label for="hosAdr">Hospital Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Type here.."
+                    required>
+            </div>
+
+            <div class="form-group mobile">
+                <div class="phoneTag">
+                    <label for="mobileNo">Mobile Number</label>
+                    <input type="text" class="form-control" id="number" name="phone" placeholder="+917720XXXXXX" required>
+                </div>
+                <div class="otpBtn">
+                    <button type="button" onclick="phoneAuth()" class="btn btn-primary">Send OTP</button>
+                </div>
+              </div>
+              <div id="recaptcha-container"></div>
+
+            
+            <div class="form-group OTPVerify">
+                <div class="otpTag">
+                    <label for="email">Enter OTP</label>
+                    <input type="text" class="form-control" id="otp" name="otp" placeholder="Type here.." required>
+                </div>
+                <div class="otpVerifyBtn">
+                    <button type="button" onclick="codeverify()" class="btn btn-primary">Verify OTP</button>
+                  </div>
+                </div>
+                
+                <div class="form-group register">
+                  <!-- <input
+                  class="pushbutton"
+                  type="button"
+                  onclick="pushData()"
+                  value="Register"
+                  style="margin-top: 10p"
+                  /> -->
+                  <button type="button" onclick="pushData()" class="regBtn regBtn-primary">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<hr style="border: 1px solid black; width: 80%;">
+<br>
+<br>
+
+<section id="footer" class="section-padding">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-lg-4">
+        <div class="footer-widget footer-link">
+          <h4>We concern about INDIA<br> and its development in medical sector.</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ipsam hic non sunt recusandae atque unde saepe nihil earum voluptatibus aliquid optio suscipit nobis quia vel quod, iure quae.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-12">
+        <div class="footer-widget footer-text">
+          <h4>Our location</h4>
+          <p class="mail"><span>Mail:</span> elittrident@gmail.com</p>
+          <p><span>Phone :</span>+917843087679</p>
+          <p><span>Location:</span> VIT, Pune</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER HERE -->
+
+<!-- plugins -->
+<script src="plugins/jQuery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/masonry/masonry.min.js"></script>
+<script src="plugins/clipboard/clipboard.min.js"></script>
+<script src="plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- Main Script -->
+<script src="js/script.js"></script>
+
+
+<script src="https://use.fontawesome.com/4ecc3dbb0b.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+
+<script>
+  const fetchRequestId = async () => {
+    var reg_id = document.getElementById("reg").value;
+    var year = reg_id.substring(0, 4);
+
+    var myHeaders = new Headers();
+    myHeaders.append("content-type", "application/json");
+    myHeaders.append(
+      "X-RapidAPI-Key",
+      "8def9c3659msh04d1088cc28ac42p11a1b0jsnd88e43f094a4"
+    );
+    myHeaders.append(
+      "X-RapidAPI-Host",
+      "mci-nmc-doctor-verification.p.rapidapi.com"
+    );
+
+    var raw = JSON.stringify({
+      task_id: "74f4c926-250c-43ca-9c53-453e87ceacd1",
+      group_id: "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+      data: {
+        registration_no: reg_id,
+        year_of_registration: year,
+        council_name: "Maharashtra Medical Council",
+      },
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks/async/verify_with_source/nmc_doctor",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        req_id = result.request_id;
+        console.log(result.request_id);
+        url =
+          "https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks?request_id=" +
+          req_id;
+        setTimeout(() => {
+          getData(result.request_id);
+        }, 10000);
+      })
+      .catch((error) => console.log("error", error));
+  };
+
+  const getData = async (reqq) => {
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "X-RapidAPI-Key",
+      "8def9c3659msh04d1088cc28ac42p11a1b0jsnd88e43f094a4"
+    );
+    myHeaders.append(
+      "X-RapidAPI-Hos",
+      "mci-nmc-doctor-verification.p.rapidapi.com"
+    );
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    // fetch(`https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks?request_id=${req_id}`, requestOptions).then(()=>{alert("1 one done")})
+    var user_name = document.getElementById("name").value;
+    var button = document.getElementById("reg_verify_btn");
+    fetch(
+      `https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks?request_id=${reqq}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        if (
+          result[0].result.source_output.name.toLowerCase().trim() ==
+          user_name.toLowerCase().trim()
+        ) {
+          button.innerText = "Verified";
+          button.disabled = true;
+        } else {
+          button.innerText = "Failed";
+          button.disabled = false;
+        }
+      })
+      .catch((error) => console.log("error", error));
+  };
+</script>
+
+<script>
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCABO5A2bt8_ePU4tN7D92s6wTUlrWgCmE",
+    authDomain: "healthcare-d6d4b.firebaseapp.com",
+    projectId: "healthcare-d6d4b",
+    storageBucket: "healthcare-d6d4b.appspot.com",
+    messagingSenderId: "225897092313",
+    appId: "1:225897092313:web:3c0fccdf8350b500a71ac8",
+    measurementId: "G-VMVQZ4VJQR",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  render();
+  function render() {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container"
+    );
+    recaptchaVerifier.render();
+  }
+  // function for send message
+  function phoneAuth() {
+    console.log("f");
+    var number = document.getElementById("number").value;
+    document.getElementById("recaptcha-container").style.display = "none";
+
+    firebase
+      .auth()
+      .signInWithPhoneNumber(number, window.recaptchaVerifier)
+      .then(function (confirmationResult) {
+        window.confirmationResult = confirmationResult;
+        coderesult = confirmationResult;
+        // document.getElementById("otp_field").style.display = "block";
+      })
+      .catch(function (error) {
+        alert(error.message);
+      });
+  }
+
+  // function for code verify
+  function codeverify() {
+    var code = document.getElementById("verificationcode").value;
+    confirmationResult
+      .confirm(code)
+      .then(function (result) {
+        var user = result.user;
+        console.log(user);
+        alert("verified");
+        const button = document.querySelector(".pushbutton");
+        button.disabled = false;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  const pushData = () => {
+    var name = document.getElementById("name").value;
+    var qualification = document.getElementById("qual").value;
+    var registration = document.getElementById("reg").value;
+    var hospitalname = document.getElementById("hospital").value;
+    var hospitaladdress = document.getElementById("address").value;
+    var number = document.getElementById("number").value;
+
+    db.collection("Doctors")
+      .doc(number)
+      .set({
+        name: name,
+        qualification: qualification,
+        reg_number: registration,
+        hospital: hospitalname,
+        address: hospitaladdress,
+        phone: number,
+        prescribed: [],
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+        alert("Done with adding!");
+        const url = `doctorDashboard.html?phone=${encodeURIComponent(
+          number
+        )}`;
+        window.location.href = url;
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
+  };
+</script>
+
+</body>
+</html>
