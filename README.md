@@ -40,5 +40,16 @@ Managing and storing physical medical records can be a cumbersome and time-consu
 
 
 ## Screenshots
-
+<p align="center">
+<img src="home.jpg" alt="Logo" width="700" height="350">
+</p>
+<p align="center">
+<img src="Doctor login.jpg" alt="Logo" width="700" height="350">
+</p>
+<p align="center">
+<img src="patient login.jpg" alt="Logo" width="700" height="350">
+</p>
+<p align="center">
+<img src="contact.jpg" alt="Logo" width="700" height="350">
+</p>
 
